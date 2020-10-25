@@ -15,18 +15,3 @@ def median_bins(values, B):
 
   return mean, std, left_bin, bins
 
-
-def median_approx(values, B):
-  mean, std, left_bin, bins = median_bins(values, B)
-  N = len(values)
-  mid = (N + 1)/2
-
-  count = left_bin
-  for b, bincount in enumerate(bins):
-    count += bincount
-    if count >= mid:
-      break
-
-  width = 2*std/B
-  median = mean - std + width*(b + 0.5)
-  return median
